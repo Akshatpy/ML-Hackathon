@@ -1,0 +1,16 @@
+{
+  "trial": 25,
+  "cv_top1": 0.9094813252506425,
+  "params": {
+    "num_leaves": 116,
+    "min_child_samples": 51,
+    "learning_rate": 0.05838833826152903,
+    "n_estimators": 800,
+    "colsample_bytree": 0.8314900274303155,
+    "subsample": 0.907099123242803,
+    "reg_lambda": 0.023023736075288948,
+    "reg_alpha": 0.009468957650271507
+  },
+  "n_trials": 26,
+  "n_complete": 20
+}
