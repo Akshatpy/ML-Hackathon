@@ -1,0 +1,22 @@
+paths:
+  data_root: "Student folder"
+  train_dir: "Student folder/train"
+  student_test_dir: "Student folder/student_test"
+  artifacts: artifacts
+  reports: reports
+  root_configs: configs
+
+geo:
+  # Trips are spread worldwide (lon -100..137, lat -35..61), so no single
+  # projected CRS works; trip 57 (Ecuador) even projects to inf in UTM 32N.
+  # Each trip gets an azimuthal-equidistant projection centred on its own
+  # track centroid: distances from the centre are exact, and over the <=100 km
+  # extent of a trip the distortion elsewhere stays well below 0.1%.
+  projection: "local_aeqd"
+
+eda:
+  radii_m: [10, 20, 30, 40, 50, 75, 100, 150]
+  large_gap_s: 5
+  implausible_speed_mps: 60
+
+seed: 42
