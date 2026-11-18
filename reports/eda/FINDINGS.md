@@ -21,7 +21,7 @@ Partitions: train = 80 trips, student_test = 10 trips. Evaluator trips not avail
 | 5 | Irregular sampling in some train trips | dt=1 s for 97% of steps overall, but trip 90 has a 42 h gap, trip 78 a 14.7 h gap, trip 81 only 72% 1-s steps | Split tracks into segments at large gaps for decoding; time-normalised features |
 | 6 | Speed outliers | trip 32: 365 steps above 60 m/s, trip 13: 103 | Speed features clipped; not used to drop fixes |
 | 7 | Graph cropping | graph = track bbox + ~0.01 deg; up to 421 weak components; trip 5 route only 47% inside the largest SCC | Transitions use bounded shortest paths with a fallback for unreachable pairs, never "main component only" |
-| 8 | Reference route has occasional jumps | 13 train trips + 1 test trip have 1-3 disconnected consecutive arcs | Continuity of the reference itself is reported alongside ours |
+| 8 | Reference route has occasional jumps | 10 train trips (13 jumps in total) + 1 test trip have 1-3 disconnected consecutive arcs | Continuity of the reference itself is reported alongside ours |
 | 9 | Train trips share roads | 10/16/29 (Moscow) share up to 56% of route nodes; 53/93 33%; 43/54 19% | Overlapping trips merged into one CV group |
 | 10 | Train is noisier than student_test | test: max gap 210 s, invalid-label rate 0.14% at 50 m; train: 11.2% (mostly trips 33, 54) | Report metrics on valid fixes; check per-fold spread before trusting CV |
 
