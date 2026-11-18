@@ -2,6 +2,8 @@ paths:
   data_root: "Student folder"
   train_dir: "Student folder/train"
   student_test_dir: "Student folder/student_test"
+  # final-demo trips: read only by the API; never by EDA, training, tuning or model selection
+  evaluator_dir: "Evaluator folder/evaluator_test"
   artifacts: artifacts
   reports: reports
   root_configs: configs
@@ -18,5 +20,29 @@ eda:
   radii_m: [10, 20, 30, 40, 50, 75, 100, 150]
   large_gap_s: 5
   implausible_speed_mps: 60
+
+preprocess:
+  # gap above which the track is cut into independent segments; 97% of steps are 1 s
+  # and the student-test max gap is 210 s, while some train trips have 14-42 h holes
+  segment_gap_s: 30
+  # distance-to-aligned-arc above which a fix is considered unlabelled (truncated routes)
+  label_valid_m: 50
+  speed_clip_mps: 60
+
+candidates:
+  radius_m: 50
+  # fixes with no arc inside radius_m fall back to the k nearest arcs within this
+  fallback_radius_m: 300
+  fallback_k: 5
+
+features:
+  heading_half_window: 2      # fixes either side used for the smoothed heading
+  min_heading_disp_m: 3.0     # below this displacement the heading is treated as unknown
+  # "fixed": +-2 fixes only. "adaptive": widen to +-4/8/15 fixes until the vehicle has
+  # moved 8 m, then carry the last known heading through stops (A/B in FINDINGS.md)
+  heading_mode: adaptive
+  adaptive_windows: [2, 4, 8, 15]
+  adaptive_min_disp_m: 8.0
+  context_offsets: [-3, -2, -1, 1, 2, 3]
 
 seed: 42
