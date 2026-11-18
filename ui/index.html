@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PathSnap Evaluator</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  :root {
+    --bg: #f5f6f8; --panel: #ffffff; --ink: #1d2433; --muted: #667085; --line: #e3e6eb;
+    --accent: #2f6fd6; --route: #e8590c; --gps: #2f6fd6; --good: #1f8a4c; --warn: #b54708;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--ink); }
+  header { padding: 12px 20px; background: var(--panel); border-bottom: 1px solid var(--line); display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0 12px 0 0; }
+  header input { width: 260px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; font: inherit; }
+  button { padding: 6px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); font: inherit; cursor: pointer; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  button:disabled { opacity: .5; cursor: default; }
+  #status { color: var(--muted); }
+  main { display: grid; grid-template-columns: 300px 1fr; gap: 16px; padding: 16px 20px; height: calc(100vh - 62px); }
+  aside { display: flex; flex-direction: column; gap: 16px; overflow: auto; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+  .card h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 10px; }
+  #trips { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  #trips button.active { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .metric { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed var(--line); }
+  .metric:last-child { border-bottom: 0; }
+  .metric b { font-variant-numeric: tabular-nums; }
+  .big { font-size: 28px; font-weight: 700; color: var(--good); }
+  #map { border-radius: 8px; border: 1px solid var(--line); min-height: 400px; }
+  #log { font: 12px/1.4 ui-monospace, Consolas, monospace; white-space: pre-wrap; max-height: 180px; overflow: auto; color: var(--muted); }
+  .legend { background: #fff; padding: 6px 10px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,.2); font-size: 12px; }
+  .legend i { display: inline-block; width: 18px; height: 4px; margin-right: 6px; vertical-align: middle; }
+  @media (max-width: 800px) { main { grid-template-columns: 1fr; height: auto; } #map { height: 60vh; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>PathSnap</h1>
+  <label>API <input id="api" placeholder="https://xxxx.trycloudflare.com"></label>
+  <label>Key <input id="key" type="password" placeholder="optional" style="width:110px"></label>
+  <select id="dataset"><option value="evaluator">evaluator trips</option><option value="student_test">student-test trips</option></select>
+  <button class="primary" id="connect">Load trips</button>
+  <span id="status">not connected</span>
+</header>
+<main>
+  <aside>
+    <div class="card"><h2>Trips</h2><div id="trips"></div></div>
+    <div class="card">
+      <h2>Result</h2>
+      <div id="headline" class="big">-</div>
+      <div style="color:var(--muted);margin-bottom:8px">top-1 accuracy after HMM / Viterbi</div>
+      <div id="metrics"></div>
+    </div>
+    <div class="card"><h2>Requests</h2><div id="log"></div></div>
+  </aside>
+  <div id="map"></div>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const apiInput = $("api"), keyInput = $("key");
+function localStorageGet(k) { try { return localStorage.getItem(k); } catch { return null; } }
+function localStorageSet(k, v) { try { localStorage.setItem(k, v); } catch {} }
+
+// API address: ?api=... in the link wins (so one shared link works), then the last value used,
+// then the same host on port 8000 (when the page is served from laptop 1 itself)
+const qs = new URLSearchParams(location.search);
+apiInput.value = qs.get("api") || localStorageGet("pathsnap_api") ||
+                 `http://${location.hostname || "localhost"}:8000`;
+keyInput.value = qs.get("key") || localStorageGet("pathsnap_key") || "";
+
+function log(msg) { const t = new Date().toLocaleTimeString(); $("log").textContent = `${t}  ${msg}\n` + $("log").textContent; }
+const base = () => apiInput.value.trim().replace(/\/+$/, "");
+const headers = (extra = {}) => keyInput.value ? { ...extra, "X-PathSnap-Key": keyInput.value } : extra;
+
+const map = L.map("map").setView([20, 0], 2);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  { maxZoom: 19, attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
+let layers = L.layerGroup().addTo(map);
+const legend = L.control({ position: "bottomright" });
+legend.onAdd = () => {
+  const d = L.DomUtil.create("div", "legend");
+  d.innerHTML = '<div><i style="background:var(--gps);height:8px;width:8px;border-radius:50%"></i>GPS observations</div>' +
+                '<div><i style="background:var(--route)"></i>Predicted route</div>';
+  return d;
+};
+legend.addTo(map);
+
+$("connect").onclick = async () => {
+  localStorageSet("pathsnap_api", apiInput.value);
+  localStorageSet("pathsnap_key", keyInput.value);
+  const ds = $("dataset").value;
+  // browsers silently block http:// calls from an https:// page (e.g. Vercel -> LAN IP)
+  if (location.protocol === "https:" && base().startsWith("http:")) {
+    $("status").textContent = "blocked: this page is https, the API must be https too (use the tunnel URL)";
+    log("mixed content: use the https tunnel address, or open the UI over http");
+    return;
+  }
+  $("status").textContent = "connecting...";
+  try {
+    const health = await (await fetch(`${base()}/health`)).json();
+    const res = await fetch(`${base()}/trips?dataset=${ds}`, { headers: headers() });
+    if (!res.ok) throw new Error(await res.text());
+    const data = await res.json();
+    $("status").textContent = `connected - model ${health.model}`;
+    log(`GET /trips (${ds}) -> ${data.trips.length} trips`);
+    $("trips").innerHTML = "";
+    data.trips.forEach(id => {
+      const b = document.createElement("button");
+      b.textContent = id;
+      b.onclick = () => runTrip(id, ds, b);
+      $("trips").appendChild(b);
+    });
+  } catch (e) {
+    $("status").textContent = "connection failed";
+    log(`error: ${e.message}`);
+  }
+};
+
+async function runTrip(id, ds, btn) {
+  document.querySelectorAll("#trips button").forEach(b => { b.classList.remove("active"); b.disabled = true; });
+  btn.classList.add("active");
+  $("headline").textContent = "...";
+  $("metrics").innerHTML = "";
+  log(`POST /predict trip=${id}`);
+  const t0 = performance.now();
+  try {
+    const res = await fetch(`${base()}/predict`, {
+      method: "POST", headers: headers({ "Content-Type": "application/json" }),
+      body: JSON.stringify({ trip_id: id, dataset: ds })
+    });
+    if (!res.ok) throw new Error(await res.text());
+    const r = await res.json();
+    draw(r);
+    show(r, (performance.now() - t0) / 1000);
+    log(`trip ${id}: ${r.n_fixes} fixes, ${r.n_route_arcs} route arcs, ${r.timing_s.with_scoring}s on server`);
+  } catch (e) {
+    $("headline").textContent = "error";
+    log(`error: ${e.message}`);
+  } finally {
+    document.querySelectorAll("#trips button").forEach(b => b.disabled = false);
+  }
+}
+
+function draw(r) {
+  layers.clearLayers();
+  const gps = L.layerGroup(r.gps_points.map(p =>
+    L.circleMarker(p, { radius: 2.5, color: "#2f6fd6", weight: 1, fillOpacity: .8 })));
+  const route = L.layerGroup(r.predicted_route.map(line =>
+    L.polyline(line, { color: "#e8590c", weight: 4, opacity: .85 })));
+  gps.addTo(layers); route.addTo(layers);
+  const all = r.gps_points.concat(...r.predicted_route);
+  if (all.length) map.fitBounds(L.latLngBounds(all), { padding: [20, 20] });
+}
+
+function show(r, clientSecs) {
+  const m = r.metrics || {};
+  const pct = v => (v === null || v === undefined) ? "n/a" : (100 * v).toFixed(2) + "%";
+  $("headline").textContent = m.available ? pct(m.hmm_top1_accuracy) : "n/a";
+  const rows = [
+    ["Classifier-only top-1", pct(m.classifier_top1_accuracy)],
+    ["HMM top-1", pct(m.hmm_top1_accuracy)],
+    ["Route continuity (HMM)", pct(m.hmm_route_continuity)],
+    ["Route continuity (classifier)", pct(m.classifier_route_continuity)],
+    ["Route precision / recall", `${pct(m.route_precision)} / ${pct(m.route_recall)}`],
+    ["Route F1", pct(m.route_f1)],
+    ["GPS fixes (scored)", `${r.n_fixes} (${m.n_scored_fixes ?? "-"})`],
+    ["Chain breaks", r.chain_breaks],
+    ["Server time", `${r.timing_s.with_scoring}s`],
+    ["Round trip", `${clientSecs.toFixed(2)}s`],
+  ];
+  $("metrics").innerHTML = rows.map(([k, v]) => `<div class="metric"><span>${k}</span><b>${v}</b></div>`).join("");
+}
+</script>
+</body>
+</html>
