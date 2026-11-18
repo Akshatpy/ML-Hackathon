@@ -1,0 +1,69 @@
+{
+  "sample_frac": 0.35,
+  "seed": 42,
+  "features": [
+    "dist",
+    "log_dist",
+    "dist_rank",
+    "dist_minus_best",
+    "dist_ratio_best",
+    "n_cand",
+    "n_cand_15m",
+    "cos_heading",
+    "abs_heading_diff",
+    "heading_ok",
+    "heading_carried",
+    "cos_minus_best",
+    "along_speed",
+    "ctx_dist_mean",
+    "ctx_dist_max",
+    "ctx_mean_minus_best",
+    "ctx_prev_dist",
+    "ctx_next_dist",
+    "has_twin",
+    "arc_len",
+    "frac",
+    "dist_to_arc_end",
+    "from_out_deg",
+    "to_out_deg",
+    "to_in_deg",
+    "speed",
+    "turn",
+    "dt_prev",
+    "step_prev"
+  ],
+  "models": {
+    "logreg": [
+      "Linear / probabilistic",
+      "Logistic Regression, L2, C=1.0, standardised inputs"
+    ],
+    "gnb": [
+      "Probabilistic (generative)",
+      "Gaussian Naive Bayes, var_smoothing=1e-9, standardised inputs"
+    ],
+    "linsvm": [
+      "Kernel-based (linear kernel)",
+      "LinearSVC C=0.5 + sigmoid calibration (3-fold)"
+    ],
+    "rf": [
+      "Ensemble (bagging)",
+      "Random Forest, 200 trees, min_samples_leaf=20, sqrt features"
+    ],
+    "lgbm": [
+      "Boosting",
+      "LightGBM, 400 trees, lr=0.05, 63 leaves, 0.8 row/col subsample"
+    ],
+    "xgb": [
+      "Boosting",
+      "XGBoost hist, 400 trees, lr=0.05, depth 7, 0.8 row/col subsample"
+    ],
+    "mlp": [
+      "Neural network",
+      "MLP 64-32 ReLU, Adam, alpha=1e-4, batch 1024, early stopping"
+    ],
+    "lgbm_rank": [
+      "Boosting (learning-to-rank)",
+      "LightGBM LambdaRank, groups = fixes, same trees as lgbm"
+    ]
+  }
+}

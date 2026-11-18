@@ -1,0 +1,49 @@
+== gnb
+   fold 0: top1=0.8750 f1_top1=0.9310 ll=0.6338 cont=0.9326 train_top1=0.8542 fit=1s
+   fold 1: top1=0.8506 f1_top1=0.9174 ll=0.6987 cont=0.9193 train_top1=0.8517 fit=1s
+   fold 2: top1=0.8226 f1_top1=0.8994 ll=0.9660 cont=0.9529 train_top1=0.8678 fit=1s
+   fold 3: top1=0.8435 f1_top1=0.9128 ll=0.8437 cont=0.9270 train_top1=0.8600 fit=1s
+   fold 4: top1=0.8861 f1_top1=0.9369 ll=0.7331 cont=0.9436 train_top1=0.8519 fit=1s
+   student_test: top1=0.8377 f1_top1=0.9107 ll=0.8032 cont=0.9361
+== linsvm
+   fold 0: top1=0.8895 f1_top1=0.9390 ll=0.0743 cont=0.9459 train_top1=0.8718 fit=15s
+   fold 1: top1=0.8875 f1_top1=0.9378 ll=0.0860 cont=0.9330 train_top1=0.8715 fit=15s
+   fold 2: top1=0.8346 f1_top1=0.9062 ll=0.1359 cont=0.9622 train_top1=0.8883 fit=16s
+   fold 3: top1=0.8687 f1_top1=0.9268 ll=0.0963 cont=0.9419 train_top1=0.8741 fit=14s
+   fold 4: top1=0.8939 f1_top1=0.9412 ll=0.0776 cont=0.9519 train_top1=0.8686 fit=16s
+   student_test: top1=0.8688 f1_top1=0.9278 ll=0.0763 cont=0.9467
+== rf
+   fold 0: top1=0.9156 f1_top1=0.9534 ll=0.0472 cont=0.9564 train_top1=0.9197 fit=209s
+   fold 1: top1=0.9237 f1_top1=0.9579 ll=0.0504 cont=0.9300 train_top1=0.9163 fit=214s
+   fold 2: top1=0.8491 f1_top1=0.9144 ll=0.0976 cont=0.9717 train_top1=0.9289 fit=216s
+   fold 3: top1=0.8819 f1_top1=0.9342 ll=0.0678 cont=0.9508 train_top1=0.9277 fit=178s
+   fold 4: top1=0.9251 f1_top1=0.9585 ll=0.0433 cont=0.9578 train_top1=0.9189 fit=205s
+   student_test: top1=0.8946 f1_top1=0.9420 ll=0.0502 cont=0.9533
+== lgbm
+   fold 0: top1=0.9218 f1_top1=0.9568 ll=0.0439 cont=0.9635 train_top1=0.9575 fit=19s
+   fold 1: top1=0.9290 f1_top1=0.9608 ll=0.0464 cont=0.9306 train_top1=0.9560 fit=18s
+   fold 2: top1=0.8517 f1_top1=0.9159 ll=0.1025 cont=0.9759 train_top1=0.9619 fit=17s
+   fold 3: top1=0.8808 f1_top1=0.9336 ll=0.0674 cont=0.9556 train_top1=0.9654 fit=17s
+   fold 4: top1=0.9316 f1_top1=0.9621 ll=0.0395 cont=0.9618 train_top1=0.9563 fit=17s
+   student_test: top1=0.9117 f1_top1=0.9514 ll=0.0459 cont=0.9560
+== xgb
+   fold 0: top1=0.9202 f1_top1=0.9559 ll=0.0444 cont=0.9627 train_top1=0.9509 fit=23s
+   fold 1: top1=0.9285 f1_top1=0.9605 ll=0.0467 cont=0.9324 train_top1=0.9492 fit=23s
+   fold 2: top1=0.8495 f1_top1=0.9146 ll=0.1032 cont=0.9764 train_top1=0.9541 fit=24s
+   fold 3: top1=0.8808 f1_top1=0.9336 ll=0.0679 cont=0.9574 train_top1=0.9586 fit=23s
+   fold 4: top1=0.9306 f1_top1=0.9615 ll=0.0400 cont=0.9626 train_top1=0.9500 fit=23s
+   student_test: top1=0.9109 f1_top1=0.9510 ll=0.0463 cont=0.9568
+== mlp
+   fold 0: top1=0.9121 f1_top1=0.9514 ll=0.0521 cont=0.9559 train_top1=0.9053 fit=69s
+   fold 1: top1=0.9189 f1_top1=0.9552 ll=0.0607 cont=0.9426 train_top1=0.9025 fit=66s
+   fold 2: top1=0.8410 f1_top1=0.9098 ll=0.1076 cont=0.9709 train_top1=0.9200 fit=96s
+   fold 3: top1=0.8708 f1_top1=0.9280 ll=0.0758 cont=0.9479 train_top1=0.9179 fit=81s
+   fold 4: top1=0.9210 f1_top1=0.9562 ll=0.0484 cont=0.9561 train_top1=0.9053 fit=100s
+   student_test: top1=0.8910 f1_top1=0.9400 ll=0.0548 cont=0.9537
+== lgbm_rank
+   fold 0: top1=0.9187 f1_top1=0.9551 ll=nan cont=0.9562 train_top1=0.9847 fit=21s
+   fold 1: top1=0.9277 f1_top1=0.9600 ll=nan cont=0.9283 train_top1=0.9841 fit=21s
+   fold 2: top1=0.8479 f1_top1=0.9137 ll=nan cont=0.9735 train_top1=0.9883 fit=22s
+   fold 3: top1=0.8793 f1_top1=0.9327 ll=nan cont=0.9536 train_top1=0.9911 fit=21s
+   fold 4: top1=0.9315 f1_top1=0.9620 ll=nan cont=0.9591 train_top1=0.9851 fit=25s
+   student_test: top1=0.9049 f1_top1=0.9476 ll=nan cont=0.9541
