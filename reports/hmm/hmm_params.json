@@ -1,0 +1,9 @@
+{
+  "beta": 5.0,
+  "emission_weight": 0.5,
+  "uturn_penalty": 10.0,
+  "cutoff_factor": 3.0,
+  "cutoff_slack": 200.0,
+  "cutoff_max": 5000.0,
+  "backward_tol": 15.0
+}

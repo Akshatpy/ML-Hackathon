@@ -1,0 +1,26 @@
+{
+  "classifier": "tuned",
+  "classifier_params": {
+    "num_leaves": 116,
+    "min_child_samples": 51,
+    "learning_rate": 0.05838833826152903,
+    "n_estimators": 800,
+    "colsample_bytree": 0.8314900274303155,
+    "subsample": 0.907099123242803,
+    "reg_lambda": 0.023023736075288948,
+    "reg_alpha": 0.009468957650271507
+  },
+  "model_file": "lgbm_tuned_full.joblib",
+  "hmm_params": {
+    "beta": 5.0,
+    "emission_weight": 0.5,
+    "uturn_penalty": 10.0,
+    "cutoff_factor": 3.0,
+    "cutoff_slack": 200.0,
+    "cutoff_max": 5000.0,
+    "backward_tol": 15.0
+  },
+  "selected_on": "train out-of-fold HMM top-1 (valid fixes)",
+  "train_oof_hmm_top1": 0.9386105193260106,
+  "train_oof_clf_top1": 0.9067039260714385
+}

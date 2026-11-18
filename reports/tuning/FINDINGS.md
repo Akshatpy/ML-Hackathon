@@ -60,3 +60,6 @@ Because the HMM consumes the probabilities, and tuning traded better top-1 for w
 calibration, the deployed classifier is chosen by **decoded** accuracy: both configurations go
 through HMM decoder tuning on out-of-fold train probabilities, and the better pair wins.
 See `reports/hmm/decoder_choice.json` and `reports/hmm/FINDINGS.md`.
+
+Outcome: after decoding, tuned 0.9386 vs untuned 0.9383 OOF top-1. The tuned model is deployed
+(`artifacts/models/lgbm_tuned_full.joblib`), but the two are effectively equal once the HMM is applied.

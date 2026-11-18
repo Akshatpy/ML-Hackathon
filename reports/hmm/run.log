@@ -1,0 +1,134 @@
+fold 0: lattices built for 18 trips so far
+fold 1: lattices built for 33 trips so far
+fold 2: lattices built for 47 trips so far
+fold 3: lattices built for 63 trips so far
+fold 4: lattices built for 78 trips so far
+untuned beta=  5.0 w=0.5 u= 0.0  hmm_top1=0.9332 (clf 0.9056) cont=0.9740
+untuned beta=  5.0 w=0.5 u= 3.0  hmm_top1=0.9351 (clf 0.9056) cont=0.9729
+untuned beta=  5.0 w=0.5 u=10.0  hmm_top1=0.9360 (clf 0.9056) cont=0.9725
+untuned beta=  5.0 w=1.0 u= 0.0  hmm_top1=0.9334 (clf 0.9056) cont=0.9748
+untuned beta=  5.0 w=1.0 u= 3.0  hmm_top1=0.9356 (clf 0.9056) cont=0.9740
+untuned beta=  5.0 w=1.0 u=10.0  hmm_top1=0.9370 (clf 0.9056) cont=0.9734
+untuned beta=  5.0 w=2.0 u= 0.0  hmm_top1=0.9299 (clf 0.9056) cont=0.9749
+untuned beta=  5.0 w=2.0 u= 3.0  hmm_top1=0.9311 (clf 0.9056) cont=0.9739
+untuned beta=  5.0 w=2.0 u=10.0  hmm_top1=0.9331 (clf 0.9056) cont=0.9733
+untuned beta= 10.0 w=0.5 u= 0.0  hmm_top1=0.9334 (clf 0.9056) cont=0.9748
+untuned beta= 10.0 w=0.5 u= 3.0  hmm_top1=0.9366 (clf 0.9056) cont=0.9736
+untuned beta= 10.0 w=0.5 u=10.0  hmm_top1=0.9383 (clf 0.9056) cont=0.9732
+untuned beta= 10.0 w=1.0 u= 0.0  hmm_top1=0.9299 (clf 0.9056) cont=0.9749
+untuned beta= 10.0 w=1.0 u= 3.0  hmm_top1=0.9320 (clf 0.9056) cont=0.9736
+untuned beta= 10.0 w=1.0 u=10.0  hmm_top1=0.9342 (clf 0.9056) cont=0.9730
+untuned beta= 10.0 w=2.0 u= 0.0  hmm_top1=0.9259 (clf 0.9056) cont=0.9741
+untuned beta= 10.0 w=2.0 u= 3.0  hmm_top1=0.9281 (clf 0.9056) cont=0.9727
+untuned beta= 10.0 w=2.0 u=10.0  hmm_top1=0.9302 (clf 0.9056) cont=0.9719
+untuned beta= 20.0 w=0.5 u= 0.0  hmm_top1=0.9299 (clf 0.9056) cont=0.9749
+untuned beta= 20.0 w=0.5 u= 3.0  hmm_top1=0.9335 (clf 0.9056) cont=0.9732
+untuned beta= 20.0 w=0.5 u=10.0  hmm_top1=0.9350 (clf 0.9056) cont=0.9727
+untuned beta= 20.0 w=1.0 u= 0.0  hmm_top1=0.9259 (clf 0.9056) cont=0.9741
+untuned beta= 20.0 w=1.0 u= 3.0  hmm_top1=0.9298 (clf 0.9056) cont=0.9724
+untuned beta= 20.0 w=1.0 u=10.0  hmm_top1=0.9306 (clf 0.9056) cont=0.9714
+untuned beta= 20.0 w=2.0 u= 0.0  hmm_top1=0.9239 (clf 0.9056) cont=0.9724
+untuned beta= 20.0 w=2.0 u= 3.0  hmm_top1=0.9263 (clf 0.9056) cont=0.9708
+untuned beta= 20.0 w=2.0 u=10.0  hmm_top1=0.9291 (clf 0.9056) cont=0.9698
+untuned beta= 40.0 w=0.5 u= 0.0  hmm_top1=0.9259 (clf 0.9056) cont=0.9741
+untuned beta= 40.0 w=0.5 u= 3.0  hmm_top1=0.9304 (clf 0.9056) cont=0.9717
+untuned beta= 40.0 w=0.5 u=10.0  hmm_top1=0.9328 (clf 0.9056) cont=0.9713
+untuned beta= 40.0 w=1.0 u= 0.0  hmm_top1=0.9239 (clf 0.9056) cont=0.9724
+untuned beta= 40.0 w=1.0 u= 3.0  hmm_top1=0.9273 (clf 0.9056) cont=0.9703
+untuned beta= 40.0 w=1.0 u=10.0  hmm_top1=0.9288 (clf 0.9056) cont=0.9691
+untuned beta= 40.0 w=2.0 u= 0.0  hmm_top1=0.9226 (clf 0.9056) cont=0.9706
+untuned beta= 40.0 w=2.0 u= 3.0  hmm_top1=0.9250 (clf 0.9056) cont=0.9688
+untuned beta= 40.0 w=2.0 u=10.0  hmm_top1=0.9276 (clf 0.9056) cont=0.9674
+untuned beta= 80.0 w=0.5 u= 0.0  hmm_top1=0.9239 (clf 0.9056) cont=0.9724
+untuned beta= 80.0 w=0.5 u= 3.0  hmm_top1=0.9292 (clf 0.9056) cont=0.9695
+untuned beta= 80.0 w=0.5 u=10.0  hmm_top1=0.9289 (clf 0.9056) cont=0.9690
+untuned beta= 80.0 w=1.0 u= 0.0  hmm_top1=0.9226 (clf 0.9056) cont=0.9706
+untuned beta= 80.0 w=1.0 u= 3.0  hmm_top1=0.9262 (clf 0.9056) cont=0.9680
+untuned beta= 80.0 w=1.0 u=10.0  hmm_top1=0.9279 (clf 0.9056) cont=0.9668
+untuned beta= 80.0 w=2.0 u= 0.0  hmm_top1=0.9198 (clf 0.9056) cont=0.9686
+untuned beta= 80.0 w=2.0 u= 3.0  hmm_top1=0.9231 (clf 0.9056) cont=0.9665
+untuned beta= 80.0 w=2.0 u=10.0  hmm_top1=0.9253 (clf 0.9056) cont=0.9649
+tuned   beta=  5.0 w=0.5 u= 0.0  hmm_top1=0.9347 (clf 0.9067) cont=0.9747
+tuned   beta=  5.0 w=0.5 u= 3.0  hmm_top1=0.9373 (clf 0.9067) cont=0.9736
+tuned   beta=  5.0 w=0.5 u=10.0  hmm_top1=0.9386 (clf 0.9067) cont=0.9731
+tuned   beta=  5.0 w=1.0 u= 0.0  hmm_top1=0.9330 (clf 0.9067) cont=0.9751
+tuned   beta=  5.0 w=1.0 u= 3.0  hmm_top1=0.9353 (clf 0.9067) cont=0.9741
+tuned   beta=  5.0 w=1.0 u=10.0  hmm_top1=0.9369 (clf 0.9067) cont=0.9734
+tuned   beta=  5.0 w=2.0 u= 0.0  hmm_top1=0.9280 (clf 0.9067) cont=0.9747
+tuned   beta=  5.0 w=2.0 u= 3.0  hmm_top1=0.9302 (clf 0.9067) cont=0.9738
+tuned   beta=  5.0 w=2.0 u=10.0  hmm_top1=0.9326 (clf 0.9067) cont=0.9730
+tuned   beta= 10.0 w=0.5 u= 0.0  hmm_top1=0.9330 (clf 0.9067) cont=0.9751
+tuned   beta= 10.0 w=0.5 u= 3.0  hmm_top1=0.9361 (clf 0.9067) cont=0.9737
+tuned   beta= 10.0 w=0.5 u=10.0  hmm_top1=0.9375 (clf 0.9067) cont=0.9731
+tuned   beta= 10.0 w=1.0 u= 0.0  hmm_top1=0.9280 (clf 0.9067) cont=0.9747
+tuned   beta= 10.0 w=1.0 u= 3.0  hmm_top1=0.9314 (clf 0.9067) cont=0.9734
+tuned   beta= 10.0 w=1.0 u=10.0  hmm_top1=0.9335 (clf 0.9067) cont=0.9725
+tuned   beta= 10.0 w=2.0 u= 0.0  hmm_top1=0.9259 (clf 0.9067) cont=0.9735
+tuned   beta= 10.0 w=2.0 u= 3.0  hmm_top1=0.9275 (clf 0.9067) cont=0.9723
+tuned   beta= 10.0 w=2.0 u=10.0  hmm_top1=0.9294 (clf 0.9067) cont=0.9714
+tuned   beta= 20.0 w=0.5 u= 0.0  hmm_top1=0.9280 (clf 0.9067) cont=0.9747
+tuned   beta= 20.0 w=0.5 u= 3.0  hmm_top1=0.9328 (clf 0.9067) cont=0.9729
+tuned   beta= 20.0 w=0.5 u=10.0  hmm_top1=0.9343 (clf 0.9067) cont=0.9722
+tuned   beta= 20.0 w=1.0 u= 0.0  hmm_top1=0.9259 (clf 0.9067) cont=0.9735
+tuned   beta= 20.0 w=1.0 u= 3.0  hmm_top1=0.9288 (clf 0.9067) cont=0.9718
+tuned   beta= 20.0 w=1.0 u=10.0  hmm_top1=0.9310 (clf 0.9067) cont=0.9707
+tuned   beta= 20.0 w=2.0 u= 0.0  hmm_top1=0.9237 (clf 0.9067) cont=0.9718
+tuned   beta= 20.0 w=2.0 u= 3.0  hmm_top1=0.9258 (clf 0.9067) cont=0.9704
+tuned   beta= 20.0 w=2.0 u=10.0  hmm_top1=0.9280 (clf 0.9067) cont=0.9692
+tuned   beta= 40.0 w=0.5 u= 0.0  hmm_top1=0.9259 (clf 0.9067) cont=0.9735
+tuned   beta= 40.0 w=0.5 u= 3.0  hmm_top1=0.9297 (clf 0.9067) cont=0.9713
+tuned   beta= 40.0 w=0.5 u=10.0  hmm_top1=0.9315 (clf 0.9067) cont=0.9706
+tuned   beta= 40.0 w=1.0 u= 0.0  hmm_top1=0.9237 (clf 0.9067) cont=0.9718
+tuned   beta= 40.0 w=1.0 u= 3.0  hmm_top1=0.9270 (clf 0.9067) cont=0.9698
+tuned   beta= 40.0 w=1.0 u=10.0  hmm_top1=0.9284 (clf 0.9067) cont=0.9684
+tuned   beta= 40.0 w=2.0 u= 0.0  hmm_top1=0.9215 (clf 0.9067) cont=0.9700
+tuned   beta= 40.0 w=2.0 u= 3.0  hmm_top1=0.9243 (clf 0.9067) cont=0.9683
+tuned   beta= 40.0 w=2.0 u=10.0  hmm_top1=0.9267 (clf 0.9067) cont=0.9668
+tuned   beta= 80.0 w=0.5 u= 0.0  hmm_top1=0.9237 (clf 0.9067) cont=0.9718
+tuned   beta= 80.0 w=0.5 u= 3.0  hmm_top1=0.9285 (clf 0.9067) cont=0.9690
+tuned   beta= 80.0 w=0.5 u=10.0  hmm_top1=0.9281 (clf 0.9067) cont=0.9682
+tuned   beta= 80.0 w=1.0 u= 0.0  hmm_top1=0.9215 (clf 0.9067) cont=0.9700
+tuned   beta= 80.0 w=1.0 u= 3.0  hmm_top1=0.9260 (clf 0.9067) cont=0.9676
+tuned   beta= 80.0 w=1.0 u=10.0  hmm_top1=0.9271 (clf 0.9067) cont=0.9659
+tuned   beta= 80.0 w=2.0 u= 0.0  hmm_top1=0.9196 (clf 0.9067) cont=0.9677
+tuned   beta= 80.0 w=2.0 u= 3.0  hmm_top1=0.9228 (clf 0.9067) cont=0.9657
+tuned   beta= 80.0 w=2.0 u=10.0  hmm_top1=0.9250 (clf 0.9067) cont=0.9640
+chosen: tuned {'beta': 5.0, 'emission_weight': 0.5, 'uturn_penalty': 10.0, 'cutoff_factor': 3.0, 'cutoff_slack': 200.0, 'cutoff_max': 5000.0, 'backward_tol': 15.0}
+            clf_top1  hmm_top1
+classifier                    
+tuned         0.9067    0.9386
+untuned       0.9056    0.9383
+clf_top1                0.9067
+hmm_top1                0.9386
+clf_continuity          0.9499
+hmm_continuity          0.9731
+chain_breaks           81.0000
+clf_route_f1            0.8290
+hmm_route_f1            0.9757
+clf_route_precision     0.7366
+hmm_route_precision     0.9611
+clf_route_recall        0.9911
+hmm_route_recall        0.9931
+student-test with lgbm_tuned_full.joblib {'beta': 5.0, 'emission_weight': 0.5, 'uturn_penalty': 10.0, 'cutoff_factor': 3.0, 'cutoff_slack': 200.0, 'cutoff_max': 5000.0, 'backward_tol': 15.0}
+ trip_id  n_fixes  clf_top1  hmm_top1  clf_continuity  hmm_continuity  clf_route_f1  hmm_route_f1  chain_breaks  decode_s
+00000000     2503    0.9573    0.9644          0.9820          0.9960        0.9635        0.9966             0      1.82
+00000007     1354    0.9446    0.9742          0.9985          1.0000        0.9685        0.9911             0      0.56
+00000009     1049    0.8970    0.9237          0.9275          0.9494        0.9066        0.9757             0      5.38
+00000040     2995    0.9603    0.9730          0.9776          0.9940        0.9128        0.9901             0      1.95
+00000052      262    0.9809    1.0000          0.9425          0.9617        0.6573        0.9984             0      0.36
+00000056     3958    0.9242    0.9677          0.9237          0.9666        0.8598        0.9861             0      9.89
+00000065      768    0.8672    0.8659          0.9726          0.9830        0.8536        0.9863             0      1.90
+00000076     1486    0.9300    0.9778          0.9441          0.9730        0.7949        0.9883             0      6.48
+00000077     3911    0.8036    0.9189          0.9670          0.9918        0.8473        0.9866             0      6.95
+00000091      874    0.9130    0.9359          0.9381          0.9691        0.7397        0.9832             0      3.29
+clf_top1               0.9079
+hmm_top1               0.9519
+clf_continuity         0.9574
+hmm_continuity         0.9785
+chain_breaks           0.0000
+clf_route_f1           0.8504
+hmm_route_f1           0.9883
+clf_route_precision    0.7521
+hmm_route_precision    0.9801
+clf_route_recall       0.9978
+hmm_route_recall       0.9966
